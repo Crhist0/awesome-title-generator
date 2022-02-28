@@ -15,8 +15,4 @@ export const GlobalStyle = createGlobalStyle`
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
-
-.Mui-selected:hover: {
-backgroundColor: 'red !important',
-},
 `;
