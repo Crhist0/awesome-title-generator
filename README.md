@@ -1,3 +1,3 @@
-## Your Awesome Title Generator
+# Your Awesome Title Generator
 
-# under construction
+## under construction
