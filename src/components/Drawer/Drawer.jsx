@@ -1,11 +1,10 @@
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
+import { Paper } from '@mui/material';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import { FlexWrapper } from '../FlexWrapper/FlexWrapper';
+import { useTheme } from '@emotion/react';
 import { Fragment, useState } from 'react';
-import { StyledDrawer } from './styled';
-
 export const DrawerComponent = (props) => {
   const [state, setState] = useState(false);
 
@@ -16,23 +15,36 @@ export const DrawerComponent = (props) => {
     ) {
       return;
     }
-
     setState(open);
+  };
+
+  const arrowTransitions = (state) => {
+    if (!state) {
+      return (
+        <ArrowRightIcon
+          sx={{
+            color: useTheme().primary,
+            opacity: '0.8',
+            transition: '4s',
+          }}
+        />
+      );
+    }
+    return (
+      <ArrowRightIcon
+        sx={{
+          color: useTheme().primary,
+          opacity: '0',
+          transition: '0s',
+        }}
+      />
+    );
   };
 
   return (
     <div>
       {['left'].map((anchor) => (
         <Fragment key={anchor}>
-          <Button
-            onClick={toggleDrawer(anchor, true)}
-            sx={{
-              position: 'absolute',
-              top: '0px',
-            }}
-          >
-            Configurations
-          </Button>
           <Drawer
             sx={{
               '& .MuiBackdrop-root, .MuiBackdrop-root-MuiModal-backdrop': {
@@ -46,6 +58,7 @@ export const DrawerComponent = (props) => {
             }}
             anchor={anchor}
             open={state}
+            onPointerEnter={toggleDrawer(anchor, true)}
             onClose={toggleDrawer(anchor, false)}
           >
             <Box
@@ -63,6 +76,20 @@ export const DrawerComponent = (props) => {
               {props.children}
             </Box>
           </Drawer>
+          <Paper
+            onPointerEnter={toggleDrawer(anchor, true)}
+            elevation={5}
+            style={{
+              position: 'absolute',
+              top: '0vh',
+              bottom: '0vh',
+              left: '0vw',
+              right: '98vw',
+              // backgroundColor: 'red',
+            }}
+          >
+            <FlexWrapper>{arrowTransitions(state)}</FlexWrapper>
+          </Paper>
         </Fragment>
       ))}
     </div>
