@@ -63,7 +63,8 @@ export const List = (props) => {
     <FormControl
       sx={{
         m: 1,
-        width: 266,
+        marginTop: '1rem',
+        width: 274,
         '& .MuiOutlinedInput-root': {
           '&.Mui-focused fieldset': {
             borderColor: useTheme().primary,
@@ -78,12 +79,17 @@ export const List = (props) => {
           maxWidth: '100%',
           padding: '0rem 0.5rem 0rem 0rem',
           color: useTheme().primary + ' !important',
+          fontFamily: 'Fredoka',
         }}
       >
         {props.id.charAt(0).toUpperCase() + props.id.slice(1)}
       </InputLabel>
       <Select
-        sx={{}}
+        sx={{
+          '& .MuiInputBase-input': {
+            fontFamily: 'Fredoka',
+          },
+        }}
         value={optionRedux}
         onChange={handleChange}
         input={<OutlinedInput label="Name" />}
