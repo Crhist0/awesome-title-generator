@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 export const StyledH1 = styled.h1`
   font-size: ${(props) => props.size}px;
   text-align: ${(props) => props.align};

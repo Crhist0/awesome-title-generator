@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const StyledWrapper = styled.div`
   display: flex;
@@ -10,23 +10,3 @@ export const StyledWrapper = styled.div`
   margin: ${(props) => (props.m ? props.m : '0rem')};
   padding: ${(props) => (props.p ? props.p : '0rem')};
 `;
-
-// ${(props) => {
-//   if (props.bg) {
-//     return css`
-//       opacity: 0.9;
-//       background-image: ${(props) => props.bg};
-//       background-position: center;
-//       background-size: cover;
-//       transition: 0.8s;
-//       :hover {
-//         opacity: 1;
-//       }
-//     `;
-//   }
-//   if (props.bgColor) {
-//     return css`
-//       background-color: ${(props) => props.theme.bgColorSecondary};
-//     `;
-//   }
-// }}
