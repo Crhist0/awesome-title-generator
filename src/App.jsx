@@ -1,5 +1,5 @@
 import { ThemeProvider } from 'styled-components';
-import { themes } from './pages/Themes/Theme';
+import { themes } from './Themes/Theme';
 import { Router } from './Router';
 import { GlobalStyle } from './styles/global';
 function App() {
