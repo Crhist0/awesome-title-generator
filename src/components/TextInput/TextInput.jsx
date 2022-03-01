@@ -28,16 +28,28 @@ export const TextInput = (props) => {
 
   return (
     <TextField
+      // helperText="É só um título, não o texto todo..."
+      // error
       onChange={handleInputChange}
       variant="standard"
       value={value}
+      inputProps={{
+        maxLength: 50,
+      }}
       sx={{
         paddingBottom: '1rem',
         width: '532px',
+        '& .MuiFormHelperText-root': {
+          fontFamily: 'Fredoka',
+          textAlign: 'center',
+          position: 'absolute',
+          margin: '35px 0rem 0rem 28%',
+        },
         '& .MuiInputBase-input': {
           textAlign: 'center',
         },
         '& .MuiInput-root': {
+          fontFamily: 'Fredoka',
           ':before': {
             transition: 'border-bottom-color  1s',
             borderBottom: '1px solid #B0B0B1',
