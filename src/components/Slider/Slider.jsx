@@ -68,7 +68,7 @@ export const InputSlider = ({ name, id, min, max }) => {
   );
 
   return (
-    <Box sx={{ width: 250, padding: '0rem 1rem' }}>
+    <Box sx={{ width: 250, padding: '0.5rem 1rem' }}>
       <StyledLabel id="input-slider" gutterBottom>
         {name}
       </StyledLabel>
