@@ -9,7 +9,7 @@ import { TextInput } from '../../components/TextInput/TextInput';
 import { CheckBox } from '../../components/Checkbox/Checkbox';
 import { List } from '../../components/List/List';
 import { DrawerComponent } from '../../components/Drawer/Drawer';
-
+import Paper from '@mui/material/Paper';
 export const Landing = () => {
   const configRedux = useSelector(({ config }) => config);
 
@@ -37,12 +37,7 @@ export const Landing = () => {
 
   return (
     <>
-      <FlexWrapper
-        id="container"
-        direction="column"
-        ySize="100%"
-        justify="center"
-      >
+      <FlexWrapper id="container" direction="column">
         <DrawerComponent id="configurations">
           <FlexWrapper id="sliders" p="1.5rem 0rem 0rem">
             <FlexWrapper
@@ -88,13 +83,17 @@ export const Landing = () => {
                 {alignBox}
                 <List
                   id="textTransform"
-                  options={[
-                    'uppercase',
-                    'capitalize',
-                    'lowercase',
-                    'full-width',
-                    'unset',
-                  ]}
+                  options={
+                    configRedux.circle
+                      ? ['uppercase', 'lowercase', 'full-width', 'unset']
+                      : [
+                          'uppercase',
+                          'capitalize',
+                          'lowercase',
+                          'full-width',
+                          'unset',
+                        ]
+                  }
                 />
               </FlexWrapper>
               <FlexWrapper id="fontFamily">
@@ -121,10 +120,12 @@ export const Landing = () => {
             bold={configRedux.bold}
           />
         </FlexWrapper>
-        <br />* alterar botão configurações por um botão flutuante
-        <br />* adicionar mais fontes
-        <br />* alterar cores da fonte e sombra
-        <br />* adicionar export
+        <p>* adicionar export css</p>
+        <p>* adicionar mais fontes</p>
+        <p>* alterar cores da fonte e sombra</p>
+        <p>* adicionar export componente react</p>
+        <p>* animação de entrada</p>
+        <p>* adicionar erro ao digitar um caracter quando já tem 50 no input</p>
       </FlexWrapper>
     </>
   );
