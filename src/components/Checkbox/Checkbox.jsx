@@ -68,9 +68,9 @@ export const CheckBox = (props) => {
               // },
             },
             '& .MuiFormControlLabel-label': {
-              fontWeight: 'bold',
               fontSize: '0.9rem',
               color: useTheme().primary,
+              fontFamily: 'Fredoka',
             },
           }}
           label={props.label}
