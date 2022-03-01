@@ -70,8 +70,6 @@ export const DrawerComponent = (props) => {
                   anchor === 'top' || anchor === 'bottom' ? 'auto' : '500px',
               }}
               role="presentation"
-              //   onClick={toggleDrawer(anchor, false)}
-              //   onKeyDown={toggleDrawer(anchor, false)}
             >
               {props.children}
             </Box>
@@ -85,7 +83,6 @@ export const DrawerComponent = (props) => {
               bottom: '0vh',
               left: '0vw',
               right: '98vw',
-              // backgroundColor: 'red',
             }}
           >
             <FlexWrapper>{arrowTransitions(state)}</FlexWrapper>
