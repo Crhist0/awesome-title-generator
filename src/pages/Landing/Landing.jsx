@@ -276,6 +276,7 @@ text-shadow: ${makeShadow(
   );
 };
 
+// * adicionar botão para 'reset'
 // * completar export css com imports de fonte html
 // * adicionar mudança de temas light/dark
 // * alterar cores da fonte e sombra
