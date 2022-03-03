@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
 }
 
-p, label, div, input {
+p, label, input {
   font: normal;
   font-family: 'Fredoka', sans-serif;
 }
@@ -18,5 +18,4 @@ p, label, div, input {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
-
 `;
