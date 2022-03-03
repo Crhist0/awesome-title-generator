@@ -1,22 +1,32 @@
 import { StyledH1 } from './styled';
 
-export const Preview = (props) => {
+export function makeShadow(offsetX, offsetY, offsetZ, blurRadius, color) {
   let shadow = '';
-  for (let index = 1; index < props.offsetZ + 1; index++) {
+  for (let index = 1; index < offsetZ + 1; index++) {
     shadow =
       shadow +
-      ` ${((props.offsetX / props.offsetZ) * index).toFixed(0)}px ${(
-        (props.offsetY / props.offsetZ) *
+      ` ${((offsetX / offsetZ) * index).toFixed(0)}px ${(
+        (offsetY / offsetZ) *
         index
-      ).toFixed(0)}px ${props.blurRadius}px ${props.shadowColor}${
-        index !== props.offsetZ ? ',' : ' '
+      ).toFixed(0)}px ${blurRadius}px ${color}${
+        index !== offsetZ ? ',' : ' '
       } `;
   }
+  return shadow;
+}
+
+export const Preview = (props) => {
   return (
     <>
       <StyledH1
         id={props.id}
-        shadow={shadow}
+        shadow={makeShadow(
+          props.offsetX,
+          props.offsetY,
+          props.offsetZ,
+          props.blurRadius,
+          props.shadowColor
+        )}
         textTransform={props.textTransform}
         align={props.align}
         fontFamily={props.fontFamily}
