@@ -1,14 +1,20 @@
 // import { useTheme } from '@mui/material/styles';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import {
+  OutlinedInput,
+  InputLabel,
+  MenuItem,
+  FormControl,
+  Select,
+} from '@mui/material';
+
 import { useState } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
-import useDebouncedEffect from '../../utils/useDebounceEffect';
 import { updateState } from '../../store/ConfigSlice';
+
 import { useTheme } from 'styled-components';
+
+import useDebouncedEffect from '../../utils/useDebounceEffect';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -19,6 +25,7 @@ export const List = (props) => {
       style: {
         maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
         width: 250,
+        scrollbarWidth: 'thin',
       },
     },
     sx: {
@@ -30,8 +37,8 @@ export const List = (props) => {
       },
     },
   };
-  //   const theme = useTheme();
   const dispatch = useDispatch();
+  const configRedux = useSelector(({ config }) => config);
   const optionRedux = useSelector(({ config }) => {
     switch (props.id) {
       case 'align':
@@ -46,6 +53,7 @@ export const List = (props) => {
   });
 
   const [option, setOption] = useState(optionRedux);
+
   const handleChange = (event) => {
     const { value } = event.target;
     setOption(value);
@@ -59,12 +67,17 @@ export const List = (props) => {
     0 // if performanse issues come up, raise this value
   );
 
+  function makeExeption() {
+    // TODO: this still has a bug
+    dispatch(updateState({ name: 'textTransform', changes: 'unset' }));
+  }
+
   return (
     <FormControl
       sx={{
         m: 1,
         marginTop: '1rem',
-        width: 274,
+        width: props.w ? props.w : 274,
         '& .MuiOutlinedInput-root': {
           '&.Mui-focused fieldset': {
             borderColor: useTheme().primary,
@@ -90,7 +103,14 @@ export const List = (props) => {
             fontFamily: 'Fredoka',
           },
         }}
-        value={optionRedux}
+        value={
+          configRedux.circle &&
+          configRedux.textTransform === 'capitalize' &&
+          props.id === 'textTransform'
+            ? makeExeption()
+            : // TODO: this still has a bug
+              optionRedux
+        }
         onChange={handleChange}
         input={<OutlinedInput label="Name" />}
         MenuProps={MenuProps}
@@ -100,9 +120,8 @@ export const List = (props) => {
             <MenuItem
               sx={{
                 //
-                '.MuiMenuItem-root, .Mui-selected': {
-                  backgroundColor: 'red',
-                },
+
+                fontFamily: props.id === 'fontFamily' ? option : 'Fredoka',
                 ':hover': {
                   backgroundColor: useTheme().primary.replace('1)', '0.2)'),
                 },
