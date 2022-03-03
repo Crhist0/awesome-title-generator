@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 import { FlexWrapper } from '../../components/FlexWrapper/FlexWrapper';
 import { Preview } from '../../components/Preview/Preview';
 import { InputSlider } from '../../components/Slider/Slider';
@@ -26,6 +27,52 @@ const modalStyle = {
   borderRadius: '15px',
   boxShadow: 24,
 };
+
+function getFontImport(font) {
+  console.log(font);
+  switch (font) {
+    case 'Fredoka':
+      return "@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap');";
+    case 'JetBrains Mono':
+      return "@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap');";
+    case 'Comfortaa':
+      return "@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap');";
+    case 'Grandstander':
+      return "@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap');";
+    case 'Big Shoulders Stencil Display':
+      return "@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap');";
+    case 'Gluten':
+      return "@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap');";
+    case 'MuseoModerno':
+      return "@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap');";
+    case 'Tourney':
+      return "@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap');";
+    case 'Nunito':
+      return "@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap');";
+    case 'Open Sans':
+      return "@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap');";
+    case 'Orbitron':
+      return "@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap');";
+    case 'Signika':
+      return "@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap');";
+    case 'Stick No Bills':
+      return "@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap');";
+    case 'Josefin Slab':
+      return "@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap');";
+    case 'Playfair Display':
+      return "@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap');";
+    case 'Podkova':
+      return "@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap');";
+    case 'Roboto Slab':
+      return "@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap');";
+    case 'Texturina':
+      return "@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap');";
+    case 'Dancing Script':
+      return "@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap');";
+    default:
+      return '';
+  }
+}
 
 export const Landing = () => {
   const configRedux = useSelector(({ config }) => config);
@@ -63,6 +110,8 @@ export const Landing = () => {
           <FlexWrapper id="cssPrint" direction="column">
             <CssPrint
               value={`
+${getFontImport(configRedux.fontFamily)}       
+
 font-size: ${configRedux.size}px; 
 text-align: ${configRedux.align};
 font-family: '${configRedux.fontFamily}';
@@ -84,6 +133,8 @@ text-shadow: ${makeShadow(
           <FlexWrapper id="cssPrint" direction="column">
             <CssPrint
               value={`
+${getFontImport(configRedux.fontFamily)}       
+              
 .AwesomeTitle {
   font-size: ${configRedux.size}px; 
   text-align: ${configRedux.align};
@@ -189,13 +240,18 @@ text-shadow: ${makeShadow(
                   id="textTransform"
                   options={
                     configRedux.circle
-                      ? ['uppercase', 'lowercase', 'full-width', 'unset']
+                      ? [
+                          'uppercase',
+                          'lowercase',
+                          //  'full-width', // BUG: propriedade experimental do css, não funciona com todas as fontes
+                          'unset',
+                        ]
                       : [
                           'uppercase',
                           'capitalize',
                           'lowercase',
-                          'full-width',
                           'unset',
+                          // 'full-width', // BUG: propriedade experimental do css, não funciona com todas as fontes
                         ]
                   }
                 />
@@ -208,6 +264,7 @@ text-shadow: ${makeShadow(
                     'Big Shoulders Stencil Display',
                     'Caveat',
                     'Comfortaa',
+                    'Dancing Script',
                     'Fredoka',
                     'Gluten',
                     'Grandstander',
@@ -283,4 +340,5 @@ text-shadow: ${makeShadow(
 // * adicionar export componente react
 // * adicionar animação de entrada
 // * adicionar erro ao digitar um caracter quando já tem 50 no input
-// * concertar bug do capitalize + archRadius
+// * BUG: full-width + font-family
+// * BUG: capitalize + archRadius
