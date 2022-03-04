@@ -1,12 +1,16 @@
-import { ThemeProvider } from 'styled-components';
-import { themes } from './Themes/Theme';
+import { ThemeProvider, CssBaseline } from '@mui/material';
 import { Router } from './Router';
-import { GlobalStyle } from './styles/global';
+import darkTheme from './Themes/DarkTheme';
+import lightTheme from './Themes/LightTheme';
+let theme = {
+  light: lightTheme,
+  dark: darkTheme,
+};
 function App() {
   return (
     <>
-      <ThemeProvider theme={themes.light}>
-        <GlobalStyle />
+      <ThemeProvider theme={theme.light}>
+        <CssBaseline />
         <Router></Router>
       </ThemeProvider>
     </>
