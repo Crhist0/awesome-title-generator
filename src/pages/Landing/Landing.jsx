@@ -33,6 +33,8 @@ function getFontImport(font) {
   switch (font) {
     case 'Fredoka':
       return "@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap');";
+    case 'Caveat':
+      return "@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap');";
     case 'JetBrains Mono':
       return "@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap');";
     case 'Comfortaa':
@@ -333,6 +335,8 @@ ${getFontImport(configRedux.fontFamily)}
   );
 };
 
+// * adicionar cssBaseline
+// * refatorar tema
 // * adicionar botão para 'reset'
 // * completar export css com imports de fonte html
 // * adicionar mudança de temas light/dark
