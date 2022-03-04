@@ -7,7 +7,7 @@ import { updateState } from '../../store/ConfigSlice';
 
 import useDebouncedEffect from '../../utils/useDebounceEffect';
 
-export const TextInput = (props) => {
+export const TextInput = () => {
   const dispatch = useDispatch();
   const textRedux = useSelector(({ config }) => config.text);
 
