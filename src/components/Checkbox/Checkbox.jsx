@@ -1,10 +1,13 @@
-import { Checkbox, FormGroup, FormControlLabel } from '@mui/material';
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useTheme } from 'styled-components';
-import { updateState } from '../../store/ConfigSlice';
-import useDebouncedEffect from '../../utils/useDebounceEffect';
+import { Checkbox, FormGroup, FormControlLabel, useTheme } from '@mui/material';
+
 import { FlexWrapper } from '../FlexWrapper/FlexWrapper';
+
+import useDebouncedEffect from '../../utils/useDebounceEffect';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { updateState } from '../../store/ConfigSlice';
+
+import { useState } from 'react';
 
 export const CheckBox = (props) => {
   const optionRedux = useSelector(({ config }) => {
@@ -48,29 +51,14 @@ export const CheckBox = (props) => {
               sx={{
                 '& .MuiSvgIcon-root': {
                   fontSize: '28px',
-                  color: useTheme().primary,
                 },
               }}
               inputProps={{ 'aria-label': 'controlled' }}
             />
           }
           sx={{
-            '& .MuiCheckbox-root': {
-              color: useTheme().primary,
-              ':hover': {
-                backgroundColor: useTheme().primary.replace('1)', '0.2)'),
-              },
-              '& .MuiTouchRipple-root': {
-                color: useTheme().primary,
-              },
-              // ':active': {
-              //   backgroundColor: useTheme().primary.replace('1)', '0.2)'),
-              // },
-            },
             '& .MuiFormControlLabel-label': {
               fontSize: '0.9rem',
-              color: useTheme().primary,
-              fontFamily: 'Fredoka',
             },
           }}
           label={props.label}

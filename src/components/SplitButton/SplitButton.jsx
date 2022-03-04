@@ -15,20 +15,6 @@ import { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateState } from '../../store/ExportSlice';
 
-import { useTheme } from 'styled-components';
-
-const modalStyle = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
-
 export const SplitButton = (props) => {
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
@@ -72,14 +58,6 @@ export const SplitButton = (props) => {
           aria-controls={open ? 'split-button-menu' : undefined}
           aria-expanded={open ? 'true' : undefined}
           onClick={handleToggle}
-          sx={{
-            backgroundColor: open
-              ? useTheme().primary.replace('1)', '0.8)')
-              : useTheme().primary.replace('1)', '0.9)'),
-            ':hover': {
-              backgroundColor: useTheme().primary,
-            },
-          }}
         >
           {props.name}
         </Button>
@@ -104,14 +82,6 @@ export const SplitButton = (props) => {
                 <MenuList id="split-button-menu">
                   {props.options.map((option, index) => (
                     <MenuItem
-                      sx={{
-                        ':hover': {
-                          backgroundColor: useTheme().primary.replace(
-                            '1)',
-                            '0.2)'
-                          ),
-                        },
-                      }}
                       key={option}
                       value={index}
                       id={option}

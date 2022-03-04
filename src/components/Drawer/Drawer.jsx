@@ -1,10 +1,9 @@
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import { Paper } from '@mui/material';
+import { Paper, Box, Drawer } from '@mui/material';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { FlexWrapper } from '../FlexWrapper/FlexWrapper';
-import { useTheme } from '@emotion/react';
+
 import { Fragment, useState } from 'react';
+
 export const DrawerComponent = (props) => {
   const [state, setState] = useState(false);
 
@@ -23,7 +22,6 @@ export const DrawerComponent = (props) => {
       return (
         <ArrowRightIcon
           sx={{
-            color: useTheme().primary,
             opacity: '0.8',
             transition: '4s',
           }}
@@ -33,7 +31,6 @@ export const DrawerComponent = (props) => {
     return (
       <ArrowRightIcon
         sx={{
-          color: useTheme().primary,
           opacity: '0',
           transition: '0s',
         }}

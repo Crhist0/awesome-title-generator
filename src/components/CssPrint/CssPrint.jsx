@@ -18,9 +18,6 @@ export const CssPrint = (props) => {
         value={props.value}
         sx={{
           width: '400px',
-          '& .MuiInputBase-input': {
-            fontFamily: 'Fredoka',
-          },
           '& .MuiInput-root': {
             borderColor: 'transparent',
             ':before': {

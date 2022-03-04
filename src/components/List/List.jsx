@@ -5,14 +5,13 @@ import {
   MenuItem,
   FormControl,
   Select,
+  useTheme,
 } from '@mui/material';
 
 import { useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { updateState } from '../../store/ConfigSlice';
-
-import { useTheme } from 'styled-components';
 
 import useDebouncedEffect from '../../utils/useDebounceEffect';
 
@@ -26,14 +25,6 @@ export const List = (props) => {
         maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
         width: 250,
         scrollbarWidth: 'thin',
-      },
-    },
-    sx: {
-      '& .Mui-selected': {
-        backgroundColor: useTheme().primary.replace('1)', '0.4) !important'),
-        ':hover': {
-          backgroundColor: useTheme().primary.replace('1)', '0.5) !important'),
-        },
       },
     },
   };
@@ -78,31 +69,18 @@ export const List = (props) => {
         m: 1,
         marginTop: '1rem',
         width: props.w ? props.w : 274,
-        '& .MuiOutlinedInput-root': {
-          '&.Mui-focused fieldset': {
-            borderColor: useTheme().primary,
-          },
-        },
       }}
     >
       <InputLabel
         id="demo-multiple-name-label"
         sx={{
-          backgroundColor: 'white',
           maxWidth: '100%',
           padding: '0rem 0.5rem 0rem 0rem',
-          color: useTheme().primary + ' !important',
-          fontFamily: 'Fredoka',
         }}
       >
         {props.id.charAt(0).toUpperCase() + props.id.slice(1)}
       </InputLabel>
       <Select
-        sx={{
-          '& .MuiInputBase-input': {
-            fontFamily: 'Fredoka',
-          },
-        }}
         value={
           configRedux.circle &&
           configRedux.textTransform === 'capitalize' &&
@@ -119,12 +97,7 @@ export const List = (props) => {
           return (
             <MenuItem
               sx={{
-                //
-
                 fontFamily: props.id === 'fontFamily' ? option : 'Fredoka',
-                ':hover': {
-                  backgroundColor: useTheme().primary.replace('1)', '0.2)'),
-                },
               }}
               key={option}
               value={option}

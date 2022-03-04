@@ -1,13 +1,12 @@
-import { useEffect, useState } from 'react';
+import { Box, Grid, Slider } from '@mui/material';
+import { StyledInput, StyledLabel } from './styled';
 
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import { StyledInput, StyledLabel, StyledSlider } from './styled';
-import { useTheme } from 'styled-components';
-
-import { useDispatch, useSelector } from 'react-redux';
-import { updateState } from '../../store/ConfigSlice';
 import useDebouncedEffect from '../../utils/useDebounceEffect';
+
+import { useState } from 'react';
+
+import { updateState } from '../../store/ConfigSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 export const InputSlider = ({ name, id, min, max }) => {
   let minSize = min || min === 0 ? min : -50;
@@ -74,23 +73,12 @@ export const InputSlider = ({ name, id, min, max }) => {
       </StyledLabel>
       <Grid container spacing={2} alignItems="center">
         <Grid item xs>
-          <StyledSlider
+          <Slider
             size="small"
             value={typeof value === 'number' ? value : 1}
             onChange={handleSliderChange}
             min={minSize}
             max={maxSize}
-            sx={{
-              '& .MuiSlider-thumbColorPrimary:hover': {
-                boxShadow:
-                  '0px 0px 0px 4.9px ' +
-                  useTheme().primary.replace('1)', '0.2)'),
-              },
-              '& .MuiSlider-thumb.Mui-focusVisible': {
-                boxShadow:
-                  '0px 0px 0px 7px ' + useTheme().primary.replace('1)', '0.4)'),
-              },
-            }}
           />
         </Grid>
         <Grid item>
@@ -102,13 +90,6 @@ export const InputSlider = ({ name, id, min, max }) => {
             sx={{
               '& .MuiInput-input': {
                 textAlign: 'center',
-                color: useTheme().primary,
-              },
-              ':before': {
-                display: 'none',
-              },
-              ':after': {
-                borderBottomColor: useTheme().primary,
               },
             }}
             inputProps={{

@@ -1,5 +1,4 @@
 import TextField from '@mui/material/TextField';
-import { useTheme } from 'styled-components';
 
 import { useState } from 'react';
 
@@ -40,24 +39,12 @@ export const TextInput = (props) => {
         paddingBottom: '1rem',
         width: '532px',
         '& .MuiFormHelperText-root': {
-          fontFamily: 'Fredoka',
           textAlign: 'center',
           position: 'absolute',
           margin: '35px 0rem 0rem 28%',
         },
         '& .MuiInputBase-input': {
           textAlign: 'center',
-        },
-        '& .MuiInput-root': {
-          fontFamily: 'Fredoka',
-          ':before': {
-            transition: 'border-bottom-color  1s',
-            borderBottom: '1px solid #B0B0B1',
-            ':hover': {},
-          },
-          ':after': {
-            borderBottom: '2px solid ' + useTheme().primary,
-          },
         },
       }}
     ></TextField>
