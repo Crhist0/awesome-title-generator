@@ -4,6 +4,27 @@ import { FlexWrapper } from '../FlexWrapper/FlexWrapper';
 
 import { Fragment, useState } from 'react';
 
+const arrowTransitions = (state) => {
+  if (!state) {
+    return (
+      <ArrowRightIcon
+        sx={{
+          opacity: '0.8',
+          transition: '4s',
+        }}
+      />
+    );
+  }
+  return (
+    <ArrowRightIcon
+      sx={{
+        opacity: '0',
+        transition: '0s',
+      }}
+    />
+  );
+};
+
 export const DrawerComponent = (props) => {
   const [state, setState] = useState(false);
 
@@ -15,27 +36,6 @@ export const DrawerComponent = (props) => {
       return;
     }
     setState(open);
-  };
-
-  const arrowTransitions = (state) => {
-    if (!state) {
-      return (
-        <ArrowRightIcon
-          sx={{
-            opacity: '0.8',
-            transition: '4s',
-          }}
-        />
-      );
-    }
-    return (
-      <ArrowRightIcon
-        sx={{
-          opacity: '0',
-          transition: '0s',
-        }}
-      />
-    );
   };
 
   return (
