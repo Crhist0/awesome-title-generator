@@ -5,7 +5,8 @@ const initialState = {
   offsetY: 8,
   offsetZ: 12,
   blurRadius: 2,
-  shadowColor: 'grey',
+  textColor: { r: 50, g: 50, b: 50, a: 1 },
+  shadowColor: { r: 150, g: 150, b: 150, a: 1 },
   textTransform: 'uppercase',
   fontFamily: 'Fredoka',
   align: 'center',
@@ -32,6 +33,8 @@ const slice = createSlice({
           return { ...state, offsetZ: changes };
         case 'blurRadius':
           return { ...state, blurRadius: changes };
+        case 'textColor':
+          return { ...state, textColor: changes };
         case 'shadowColor':
           return { ...state, shadowColor: changes };
         case 'textTransform':
