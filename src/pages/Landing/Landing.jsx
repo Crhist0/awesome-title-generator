@@ -17,6 +17,7 @@ import { useEffect, useState } from 'react';
 
 import { Modal, Box, Fade, Backdrop } from '@mui/material';
 import { updateState } from '../../store/ExportSlice';
+import ResetButton from '../../components/Button/Button';
 
 const modalStyle = {
   position: 'absolute',
@@ -289,15 +290,18 @@ ${getFontImport(configRedux.fontFamily)}
                 />
               </FlexWrapper>
             </FlexWrapper>
-            <SplitButton
-              name="EXPORT"
-              options={[
-                'CSS pure',
-                'CSS Class',
-                'ReactJs Component',
-                'Curved Text',
-              ]}
-            />
+            <FlexWrapper ySize="10%" justify="space-evenly">
+              <ResetButton>Reset</ResetButton>
+              <SplitButton
+                name="EXPORT"
+                options={[
+                  'CSS pure',
+                  'CSS Class',
+                  'ReactJs Component',
+                  'Curved Text',
+                ]}
+              />
+            </FlexWrapper>
           </FlexWrapper>
         </DrawerComponent>
         <FlexWrapper id="preview" p="2rem 3rem" xSize="45%" ySize="50%">
@@ -335,10 +339,10 @@ ${getFontImport(configRedux.fontFamily)}
   );
 };
 
-// * adicionar cssBaseline
-// * refatorar tema
-// * adicionar botão para 'reset'
-// * completar export css com imports de fonte html
+// * adicionar cssBaseline ✅
+// * refatorar tema ✅
+// * completar export css com imports de fonte html ✅
+// * adicionar botão para 'reset' ✅
 // * adicionar mudança de temas light/dark
 // * alterar cores da fonte e sombra
 // * adicionar export componente react
