@@ -48,6 +48,7 @@ export const CheckBox = (props) => {
             },
           }}
           label={props.label}
+          labelPlacement="top"
         />
       </FlexWrapper>
     </FormGroup>
