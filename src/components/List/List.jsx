@@ -72,6 +72,7 @@ export const List = (props) => {
       <InputLabel
         id="demo-multiple-name-label"
         sx={{
+          backgroundColor: 'white',
           maxWidth: '100%',
           padding: '0rem 0.5rem 0rem 0rem',
         }}
