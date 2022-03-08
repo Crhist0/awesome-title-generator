@@ -18,6 +18,13 @@ const lightTheme = createTheme({
         root: {},
       },
     },
+    MuiTooltip: {
+      styleOverrides: {
+        tooltip: {
+          backgroundColor: 'transparent',
+        },
+      },
+    },
     MuiCssBaseline: {
       styleOverrides: {},
     },

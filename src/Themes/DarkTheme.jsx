@@ -14,6 +14,13 @@ const darkTheme = createTheme({
     h3: {},
   },
   components: {
+    MuiTooltip: {
+      styleOverrides: {
+        tooltip: {
+          backgroundColor: 'transparent',
+        },
+      },
+    },
     MuiCssBaseline: {
       styleOverrides: {
         body: darkScrollbar(),
