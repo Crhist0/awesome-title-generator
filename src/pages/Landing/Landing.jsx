@@ -9,15 +9,17 @@ import { makeShadow } from '../../components/Preview/Preview';
 import { CssPrint } from '../../components/CssPrint/CssPrint';
 import { List } from '../../components/List/List';
 import { SplitButton } from '../../components/SplitButton/SplitButton';
-
-import CircleType from 'circletype';
+import ResetButton from '../../components/Button/Button';
+import ColorPicker from '../../components/ColorPicker/ColorPicker';
+import BasicTooltip from '../../components/Tooltip/Tooltip';
+import { Modal, Box, Fade, Backdrop, Paper, Typography } from '@mui/material';
 
 import { useDispatch, useSelector } from 'react-redux';
+import { updateState } from '../../store/ExportSlice';
+
 import { useEffect, useState } from 'react';
 
-import { Modal, Box, Fade, Backdrop } from '@mui/material';
-import { updateState } from '../../store/ExportSlice';
-import ResetButton from '../../components/Button/Button';
+import CircleType from 'circletype';
 
 const modalStyle = {
   position: 'absolute',
@@ -120,6 +122,9 @@ text-align: ${configRedux.align};
 font-family: '${configRedux.fontFamily}';
 text-transform: ${configRedux.textTransform};
 font-weight: ${configRedux.bold ? 'bold' : 'normal'};
+color: rgba(${configRedux.shadowColor.r}, ${configRedux.shadowColor.g}, ${
+                configRedux.shadowColor.b
+              }, ${configRedux.shadowColor.a})
 text-shadow: ${makeShadow(
                 configRedux.offsetX,
                 configRedux.offsetY,
@@ -144,6 +149,9 @@ ${getFontImport(configRedux.fontFamily)}
   font-family: '${configRedux.fontFamily}';
   text-transform: ${configRedux.textTransform};
   font-weight: ${configRedux.bold ? 'bold' : 'normal'};
+  color: rgba(${configRedux.shadowColor.r}, ${configRedux.shadowColor.g}, ${
+                configRedux.shadowColor.b
+              }, ${configRedux.shadowColor.a})
   text-shadow: ${makeShadow(
     configRedux.offsetX,
     configRedux.offsetY,
@@ -236,6 +244,36 @@ ${getFontImport(configRedux.fontFamily)}
                 <CheckBox label="Curve Text" id="circle" />
                 <CheckBox label="Bold" id="bold" />
               </FlexWrapper>
+              <FlexWrapper id="colorPicker" p="1rem 0rem 1.5rem">
+                <FlexWrapper direction="column" id="shadowColor">
+                  <Typography sx={{ fontSize: '0.9rem', marginBottom: '15px' }}>
+                    Shadow Color
+                  </Typography>
+                  <BasicTooltip title={<ColorPicker id="shadowColor" />}>
+                    <Paper
+                      sx={{
+                        height: '30px',
+                        width: '30px',
+                        backgroundColor: `rgba(${configRedux.shadowColor.r}, ${configRedux.shadowColor.g}, ${configRedux.shadowColor.b}, ${configRedux.shadowColor.a})`,
+                      }}
+                    />
+                  </BasicTooltip>
+                </FlexWrapper>
+                <FlexWrapper direction="column" id="textColor">
+                  <Typography sx={{ fontSize: '0.9rem', marginBottom: '15px' }}>
+                    Text Color
+                  </Typography>
+                  <BasicTooltip title={<ColorPicker id="textColor" />}>
+                    <Paper
+                      sx={{
+                        height: '30px',
+                        width: '30px',
+                        backgroundColor: `rgba(${configRedux.textColor.r}, ${configRedux.textColor.g}, ${configRedux.textColor.b}, ${configRedux.textColor.a})`,
+                      }}
+                    />
+                  </BasicTooltip>
+                </FlexWrapper>
+              </FlexWrapper>
               <FlexWrapper id="Arch/Align-and-textTransform">
                 {inputSlider}
                 {alignBox}
@@ -290,7 +328,7 @@ ${getFontImport(configRedux.fontFamily)}
                 />
               </FlexWrapper>
             </FlexWrapper>
-            <FlexWrapper ySize="10%" justify="space-evenly">
+            <FlexWrapper id="reset / export" ySize="15%" justify="space-evenly">
               <ResetButton>Reset</ResetButton>
               <SplitButton
                 name="EXPORT"
@@ -311,6 +349,7 @@ ${getFontImport(configRedux.fontFamily)}
             offsetY={configRedux.offsetY}
             offsetZ={configRedux.offsetZ}
             blurRadius={configRedux.blurRadius}
+            textColor={configRedux.textColor}
             shadowColor={configRedux.shadowColor}
             align={configRedux.align}
             fontFamily={configRedux.fontFamily}
@@ -343,8 +382,8 @@ ${getFontImport(configRedux.fontFamily)}
 // * refatorar tema ✅
 // * completar export css com imports de fonte html ✅
 // * adicionar botão para 'reset' ✅
+// * alterar cores da fonte e sombra ✅
 // * adicionar mudança de temas light/dark
-// * alterar cores da fonte e sombra
 // * adicionar export componente react
 // * adicionar animação de entrada
 // * adicionar erro ao digitar um caracter quando já tem 50 no input
