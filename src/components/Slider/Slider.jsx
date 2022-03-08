@@ -1,10 +1,6 @@
 import { Box, Grid, Slider } from '@mui/material';
 import { StyledInput, StyledLabel } from './styled';
 
-import useDebouncedEffect from '../../utils/useDebounceEffect';
-
-import { useState } from 'react';
-
 import { updateState } from '../../store/ConfigSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -34,37 +30,29 @@ export const InputSlider = ({ name, id, min, max }) => {
     }
   });
 
-  const [value, setValue] = useState(tempConfig);
   const dispatch = useDispatch();
 
   const handleSliderChange = (event, newValue) => {
-    setValue(newValue);
+    dispatch(updateState({ name: id, changes: newValue }));
   };
 
   const handleInputChange = (event) => {
-    setValue(Number(event.target.value));
-  };
-
-  const handleBlur = () => {
-    if (value < minSize) {
-      setValue(minSize);
-    } else if (value > maxSize) {
-      setValue(maxSize);
+    if (Number(event.target.value) < minSize) {
+      dispatch(updateState({ name: id, changes: Number(minSize) }));
+    } else if (Number(event.target.value) > maxSize) {
+      dispatch(updateState({ name: id, changes: Number(maxSize) }));
+    } else {
+      dispatch(updateState({ name: id, changes: Number(event.target.value) }));
     }
   };
 
-  useDebouncedEffect(
-    () => {
-      dispatch(
-        updateState({
-          name: id,
-          changes: value,
-        })
-      );
-    },
-    [value],
-    0 // if performanse issues come up, raise this value
-  );
+  const handleBlur = () => {
+    if (tempConfig < minSize) {
+      dispatch(updateState({ name: id, changes: Number(minSize) }));
+    } else if (tempConfig > maxSize) {
+      dispatch(updateState({ name: id, changes: Number(maxSize) }));
+    }
+  };
 
   return (
     <Box sx={{ width: 250, padding: '0.5rem 1rem' }}>
@@ -75,7 +63,7 @@ export const InputSlider = ({ name, id, min, max }) => {
         <Grid item xs>
           <Slider
             size="small"
-            value={typeof value === 'number' ? value : 1}
+            value={typeof tempConfig === 'number' ? tempConfig : 1}
             onChange={handleSliderChange}
             min={minSize}
             max={maxSize}
@@ -83,7 +71,7 @@ export const InputSlider = ({ name, id, min, max }) => {
         </Grid>
         <Grid item>
           <StyledInput
-            value={value}
+            value={tempConfig}
             size="small"
             onChange={handleInputChange}
             onBlur={handleBlur}

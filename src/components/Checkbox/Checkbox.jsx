@@ -1,13 +1,8 @@
-import { Checkbox, FormGroup, FormControlLabel, useTheme } from '@mui/material';
-
+import { Checkbox, FormGroup, FormControlLabel } from '@mui/material';
 import { FlexWrapper } from '../FlexWrapper/FlexWrapper';
-
-import useDebouncedEffect from '../../utils/useDebounceEffect';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { updateState } from '../../store/ConfigSlice';
-
-import { useState } from 'react';
 
 export const CheckBox = (props) => {
   const optionRedux = useSelector(({ config }) => {
@@ -20,21 +15,12 @@ export const CheckBox = (props) => {
         break;
     }
   });
-  const [checked, setChecked] = useState(optionRedux);
 
   const dispatch = useDispatch();
 
   const handleChange = (event) => {
-    setChecked(event.target.checked);
+    dispatch(updateState({ name: props.id, changes: !optionRedux }));
   };
-
-  useDebouncedEffect(
-    () => {
-      dispatch(updateState({ name: props.id, changes: checked }));
-    },
-    [checked],
-    0 // if performanse issues come up, raise this value
-  );
 
   return (
     <FormGroup
@@ -47,7 +33,7 @@ export const CheckBox = (props) => {
           control={
             <Checkbox
               onChange={handleChange}
-              checked={checked}
+              checked={optionRedux}
               sx={{
                 '& .MuiSvgIcon-root': {
                   fontSize: '28px',
