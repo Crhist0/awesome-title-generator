@@ -79,6 +79,9 @@ export const InputSlider = ({ name, id, min, max }) => {
               '& .MuiInput-input': {
                 textAlign: 'center',
               },
+              ':before': {
+                display: 'none',
+              },
             }}
             inputProps={{
               step: 1,
