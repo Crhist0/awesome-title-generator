@@ -85,7 +85,7 @@ export const SplitButton = (props) => {
                       key={option}
                       value={index}
                       id={option}
-                      disabled={index >= 2 ? true : false}
+                      disabled={index == 2 ? true : false}
                       onClick={(event) => handleMenuItemClick(event, index)}
                     >
                       {option}
