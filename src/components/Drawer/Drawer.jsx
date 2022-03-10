@@ -2,7 +2,8 @@ import { Paper, Box, Drawer } from '@mui/material';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { FlexWrapper } from '../FlexWrapper/FlexWrapper';
 
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const arrowTransitions = (state) => {
   if (!state) {
@@ -26,6 +27,15 @@ const arrowTransitions = (state) => {
 };
 
 export const DrawerComponent = (props) => {
+  // the useSelector and useEffect bellow is for the starter animation
+  const drawer = useSelector(({ drawer }) => drawer);
+  useEffect(() => {
+    if (drawer) {
+      setState(true);
+    }
+  }, [drawer]);
+  // end animation
+
   const [state, setState] = useState(false);
 
   const toggleDrawer = (anchor, open) => (event) => {
