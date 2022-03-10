@@ -70,8 +70,7 @@ export const DrawerComponent = (props) => {
                 resize: 'horizontal',
                 overflow: 'hidden',
                 height: '100%',
-                width:
-                  anchor === 'top' || anchor === 'bottom' ? 'auto' : '500px',
+                width: '500px',
               }}
               role="presentation"
             >
