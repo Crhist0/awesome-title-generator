@@ -12,10 +12,11 @@ import ClickAwayListener from '@mui/material/ClickAwayListener';
 
 import { useRef, useState } from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateState } from '../../store/ExportSlice';
 
 export const SplitButton = (props) => {
+  const configRedux = useSelector(({ config }) => config);
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
   const dispatch = useDispatch();
@@ -85,7 +86,12 @@ export const SplitButton = (props) => {
                       key={option}
                       value={index}
                       id={option}
-                      disabled={index == 2 ? true : false}
+                      disabled={
+                        (configRedux.circle && option !== 'Curved Text') ||
+                        (!configRedux.circle && option === 'Curved Text')
+                          ? true
+                          : false
+                      }
                       onClick={(event) => handleMenuItemClick(event, index)}
                     >
                       {option}
