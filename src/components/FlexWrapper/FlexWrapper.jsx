@@ -4,6 +4,7 @@ export const FlexWrapper = (props) => {
   return (
     <>
       <StyledWrapper
+        id={props.id}
         direction={props.direction}
         justify={props.justify}
         align={props.align}
