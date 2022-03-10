@@ -31,12 +31,12 @@ export const DrawerComponent = (props) => {
   const drawer = useSelector(({ drawer }) => drawer);
   useEffect(() => {
     if (drawer) {
-      setState(true);
+      setState(false);
     }
   }, [drawer]);
   // end animation
 
-  const [state, setState] = useState(false);
+  const [state, setState] = useState(true);
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -58,9 +58,6 @@ export const DrawerComponent = (props) => {
                 backgroundColor: 'rgba(0, 0, 0, 0) ',
                 transition:
                   'background-color 0.2s cubic-bezier(0.67, 0.1, 0.35, 0.83) !important;',
-                ':hover': {
-                  backgroundColor: 'rgba(0, 0, 0, 0.2)',
-                },
               },
             }}
             anchor={anchor}
