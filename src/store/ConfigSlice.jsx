@@ -14,7 +14,7 @@ const initialState = {
   radius: 500,
   circle: false,
   bold: false,
-  text: 'Your Awesome Text Generator',
+  text: 'Awesome Title',
 };
 
 const slice = createSlice({
@@ -22,6 +22,7 @@ const slice = createSlice({
   initialState,
   reducers: {
     clearState: (state, action) => initialState,
+    animateState: (state, action) => action.payload,
     updateState: (state, action) => {
       let { name, changes } = action.payload;
       switch (name) {
@@ -60,6 +61,6 @@ const slice = createSlice({
   },
 });
 
-export const { clearState, updateState } = slice.actions;
+export const { clearState, updateState, animateState } = slice.actions;
 
 export default slice.reducer;
