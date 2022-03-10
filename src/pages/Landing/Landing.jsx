@@ -23,11 +23,13 @@ import {
 
 import { useDispatch, useSelector } from 'react-redux';
 import { updateState } from '../../store/ExportSlice';
+import { updateState as drawerUpdateState } from '../../store/DrawerSlice';
 
 import { useEffect, useState } from 'react';
 
 import ColorPicker from '../../components/ColorPicker/ColorPicker';
 import CircleType from 'circletype';
+import { animateState, clearState } from '../../store/ConfigSlice';
 
 const modalStyle = {
   position: 'absolute',
@@ -40,7 +42,6 @@ const modalStyle = {
 };
 
 function getFontImport(font) {
-  console.log(font);
   switch (font) {
     case 'Fredoka':
       return "@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap');";
@@ -335,10 +336,78 @@ ${getFontImport(configRedux.fontFamily)}
     getExportMode(modalExportRedux.selected, false);
   };
 
+  // start animation effect
+  useEffect(() => {
+    dispatch(
+      animateState({
+        offsetX: 94,
+        offsetY: 150,
+        offsetZ: 150,
+        blurRadius: 0,
+        textColor: { r: 232, g: 232, b: 232, a: 1 },
+        shadowColor: { r: 38, g: 118, b: 191, a: 1 },
+        textTransform: 'unset',
+        fontFamily: 'Roboto Slab',
+        align: 'center',
+        size: 100,
+        radius: 500,
+        circle: false,
+        bold: true,
+        text: 'Make',
+      })
+    );
+    setTimeout(() => {
+      dispatch(
+        animateState({
+          offsetX: -10,
+          offsetY: 15,
+          offsetZ: 125,
+          blurRadius: 8,
+          textColor: { r: 182, g: 230, b: 107, a: 1 },
+          shadowColor: { r: 80, g: 117, b: 85, a: 0.03 },
+          textTransform: 'unset',
+          fontFamily: 'Grandstander',
+          align: 'center',
+          size: 90,
+          radius: 500,
+          circle: false,
+          bold: false,
+          text: 'Your',
+        })
+      );
+    }, 500);
+    setTimeout(() => {
+      dispatch(
+        animateState({
+          offsetX: 0,
+          offsetY: 250,
+          offsetZ: 3,
+          blurRadius: 2,
+          textColor: { r: 148, g: 95, b: 144, a: 1 },
+          shadowColor: { r: 123, g: 81, b: 133, a: 0.57 },
+          textTransform: 'uppercase',
+          fontFamily: 'Orbitron',
+          align: 'center',
+          size: 110,
+          radius: 667,
+          circle: true,
+          bold: true,
+          text: 'O w n',
+        })
+      );
+    }, 1000);
+    setTimeout(() => {
+      dispatch(clearState());
+    }, 1500);
+    setTimeout(() => {
+      dispatch(drawerUpdateState(true));
+    }, 1800);
+  }, []);
+
   return (
     <>
       <FlexWrapper id="container" direction="column">
-        <DrawerComponent id="configurations">
+        <DrawerComponent open id="configurations">
           <FlexWrapper
             id="sliders"
             p="1.5rem 0rem 0rem"
@@ -359,14 +428,14 @@ ${getFontImport(configRedux.fontFamily)}
                 <InputSlider
                   name="X axis distance"
                   id="offsetX"
-                  max={150}
-                  min={-150}
+                  max={300}
+                  min={-300}
                 />
                 <InputSlider
                   name="Y axis distance"
                   id="offsetY"
-                  max={150}
-                  min={-150}
+                  max={300}
+                  min={-300}
                 />
               </FlexWrapper>
               <FlexWrapper id="Z-and-Blur">
@@ -379,7 +448,7 @@ ${getFontImport(configRedux.fontFamily)}
                 <InputSlider name="Blur radius" id="blurRadius" min={0} />
               </FlexWrapper>
               <FlexWrapper id="Size-and-Curve_and_Bold">
-                <InputSlider name="Size" id="size" min={1} max={100} />
+                <InputSlider name="Size" id="size" min={1} max={150} />
                 <CheckBox label="Curve Text" id="circle" />
                 <CheckBox label="Bold" id="bold" />
               </FlexWrapper>
@@ -522,11 +591,14 @@ ${getFontImport(configRedux.fontFamily)}
 // * completar export css com imports de fonte html ✅
 // * adicionar botão para 'reset' ✅
 // * alterar cores da fonte e sombra ✅
-// * adicionar export texto curvo 🟨  os spans não estão com os parametros
+// * adicionar export texto curvo 🟥  os spans não estão com os parametros
 // * adicionar export componente react ✅
-// * adicionar animação de entrada
+// * adicionar animação de entrada ✅
+// * Reset do texto ✅
+// * adicionar erro ao digitar um caracter quando já tem 50 no input ✅
+// * alterar minoria de layout - favicon, page- title ✅
+// * refatorar responsividade
 // * adicionar mudança de temas light/dark
-// * adicionar erro ao digitar um caracter quando já tem 50 no input
 // * BUG: full-width + font-family
 // * BUG: capitalize + archRadius
-// * alterar minoria de layout - favicon, page title
+// * BUG: reset + list = após o reset não é possível voltar ao item da lista que estava previamente selecionado
