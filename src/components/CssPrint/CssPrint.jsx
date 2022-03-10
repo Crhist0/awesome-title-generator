@@ -6,8 +6,8 @@ export const CssPrint = (props) => {
       style={{
         overflow: 'auto',
         scrollbarWidth: 'thin',
-        maxHeight: '600px',
-        width: '430px',
+        height: '70vh',
+        width: '28vw',
         margin: '15px 0px 25px 25px',
       }}
     >
@@ -17,7 +17,7 @@ export const CssPrint = (props) => {
         spellCheck={false}
         value={props.value}
         sx={{
-          width: '400px',
+          width: '27vw',
           '& .MuiInput-root': {
             borderColor: 'transparent',
             ':before': {
