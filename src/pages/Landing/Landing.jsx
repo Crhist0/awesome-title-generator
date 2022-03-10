@@ -10,15 +10,23 @@ import { CssPrint } from '../../components/CssPrint/CssPrint';
 import { List } from '../../components/List/List';
 import { SplitButton } from '../../components/SplitButton/SplitButton';
 import ResetButton from '../../components/Button/Button';
-import ColorPicker from '../../components/ColorPicker/ColorPicker';
 import BasicTooltip from '../../components/Tooltip/Tooltip';
-import { Modal, Box, Fade, Backdrop, Paper, Typography } from '@mui/material';
+import {
+  Modal,
+  Box,
+  Fade,
+  Backdrop,
+  Paper,
+  Typography,
+  Divider,
+} from '@mui/material';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { updateState } from '../../store/ExportSlice';
 
 import { useEffect, useState } from 'react';
 
+import ColorPicker from '../../components/ColorPicker/ColorPicker';
 import CircleType from 'circletype';
 
 const modalStyle = {
@@ -83,16 +91,19 @@ export const Landing = () => {
   const configRedux = useSelector(({ config }) => config);
   const modalExportRedux = useSelector(({ modalExport }) => modalExport);
   const [modalOpen, setModalOpen] = useState(false);
+  const [circleExport, setCircleExport] = useState('unset');
   const dispatch = useDispatch();
 
   useEffect(() => {
-    document.getElementById('title').innerHTML = configRedux.text; // reset, it gets bigger without this for some reason
+    document.getElementById('awesomeTitle').innerHTML = configRedux.text; // reset, it gets bigger without this for some reason
     if (configRedux.circle) {
-      new CircleType(document.getElementById('title')).radius(
+      new CircleType(document.getElementById('awesomeTitle')).radius(
         configRedux.radius
       );
+      // eslint-disable-next-line prettier/prettier
+      setCircleExport(document.getElementById('preview').innerHTML.replace('id="awesomeTitle" font-family="Fredoka" size="82" class="','class="AwesomeTitle '));
     }
-  }, [configRedux]);
+  }, [configRedux.circle, configRedux.radius, configRedux.text]);
 
   // if it's not using circleType feature it won't show the 'arch radius' slider
   let inputSlider = (
@@ -115,6 +126,8 @@ export const Landing = () => {
           <FlexWrapper id="cssPrint" direction="column">
             <CssPrint
               value={`
+/*    My Awesome Title Generator CSS    */
+
 ${getFontImport(configRedux.fontFamily)}       
 
 font-size: ${configRedux.size}px; 
@@ -122,9 +135,9 @@ text-align: ${configRedux.align};
 font-family: '${configRedux.fontFamily}';
 text-transform: ${configRedux.textTransform};
 font-weight: ${configRedux.bold ? 'bold' : 'normal'};
-color: rgba(${configRedux.shadowColor.r}, ${configRedux.shadowColor.g}, ${
-                configRedux.shadowColor.b
-              }, ${configRedux.shadowColor.a})
+color: rgba(${configRedux.textColor.r}, ${configRedux.textColor.g}, ${
+                configRedux.textColor.b
+              }, ${configRedux.textColor.a});
 text-shadow: ${makeShadow(
                 configRedux.offsetX,
                 configRedux.offsetY,
@@ -141,6 +154,8 @@ text-shadow: ${makeShadow(
           <FlexWrapper id="cssPrint" direction="column">
             <CssPrint
               value={`
+/*    My Awesome Title Generator CSS    */
+
 ${getFontImport(configRedux.fontFamily)}       
               
 .AwesomeTitle {
@@ -149,9 +164,9 @@ ${getFontImport(configRedux.fontFamily)}
   font-family: '${configRedux.fontFamily}';
   text-transform: ${configRedux.textTransform};
   font-weight: ${configRedux.bold ? 'bold' : 'normal'};
-  color: rgba(${configRedux.shadowColor.r}, ${configRedux.shadowColor.g}, ${
-                configRedux.shadowColor.b
-              }, ${configRedux.shadowColor.a})
+  color: rgba(${configRedux.textColor.r}, ${configRedux.textColor.g}, ${
+                configRedux.textColor.b
+              }, ${configRedux.textColor.a});
   text-shadow: ${makeShadow(
     configRedux.offsetX,
     configRedux.offsetY,
@@ -164,9 +179,133 @@ ${getFontImport(configRedux.fontFamily)}
           </FlexWrapper>
         );
       case 'react':
-        return 'not implemented';
+        return (
+          <FlexWrapper>
+            <FlexWrapper id="cssPrint" direction="column">
+              <CssPrint
+                value={`
+//    AwesomeTitle.jsx 
+
+import { StyledH1 } from './styled';
+
+const makeShadow = () => {
+  let shadow = '';
+  for (let index = 1; index < ${configRedux.offsetZ} + 1; index++) {
+    shadow = shadow + \` 
+    \${((${configRedux.offsetX} / ${configRedux.offsetZ}) * index).toFixed(0)}px 
+    \${((${configRedux.offsetY} / ${configRedux.offsetZ}) * index).toFixed(0)}px 
+    ${configRedux.blurRadius}px rgba(${configRedux.shadowColor.r}, ${configRedux.shadowColor.g}, ${configRedux.shadowColor.b}, ${configRedux.shadowColor.a}) \${index !== ${configRedux.offsetZ} ? ',' : ' '} \`;
+  }
+  return shadow;
+}
+
+export const AwesomeTitle = () => {
+  return (
+    <>
+      <StyledH1
+        id='awesomeTitle'
+        shadow={makeShadow()}
+        textColor='rgba(${configRedux.textColor.r}, ${configRedux.textColor.g}, ${configRedux.textColor.b}, ${configRedux.textColor.a})'
+        textTransform='${configRedux.textTransform}'
+        align='${configRedux.align}'
+        fontFamily='${configRedux.fontFamily}'
+        size='${configRedux.size}'
+        bold={${configRedux.bold}}
+      >
+        ${configRedux.text}
+      </StyledH1>
+    </>
+  );
+};   
+              `}
+              />
+            </FlexWrapper>
+            <Divider
+              orientation="vertical"
+              flexItem
+              sx={{ margin: '13%  1.5rem' }}
+            />
+            <FlexWrapper id="cssPrint" direction="column">
+              <Typography sx={{ width: '21vw', margin: '0rem 1rem' }}>
+                You need &quot;styled-components&quot; lib in your project. A
+                &quot;npm i styled-components&quot; should do the trick.
+                <Typography sx={{ marginTop: '1rem' }}>
+                  Also import the font below in your CSS or HTML file:
+                </Typography>
+                <Typography>{getFontImport(configRedux.fontFamily)}</Typography>
+              </Typography>
+            </FlexWrapper>
+            <Divider
+              orientation="vertical"
+              flexItem
+              sx={{ margin: '13%  -1px 13% 1.5rem' }}
+            />
+            <FlexWrapper id="cssPrint" direction="column">
+              <CssPrint
+                value={`
+//    styled.jsx
+  
+  import styled from 'styled-components';
+
+  export const StyledH1 = styled.h1\`
+    color: \${(props) => props.textColor};
+    font-size: \${(props) => props.size}px;
+    text-align: \${(props) => props.align};
+    text-shadow: \${(props) => props.shadow};
+    font-family: \${(props) => props.fontFamily};
+    text-transform: \${(props) => props.textTransform};
+    font-weight: \${(props) => (props.bold ? 'bold' : 'normal')};
+  \`;
+  `}
+              />
+            </FlexWrapper>
+          </FlexWrapper>
+        );
       case 'curve':
-        return 'not implemented';
+        return (
+          <FlexWrapper>
+            <FlexWrapper id="cssPrint" direction="column">
+              <CssPrint
+                value={`
+<!--    My Awesome Title Generator HTML    -->
+
+${circleExport}       
+              `}
+              />
+            </FlexWrapper>
+            <Divider
+              orientation="vertical"
+              flexItem
+              sx={{ margin: '13%  1rem' }}
+            />
+            <FlexWrapper id="cssPrint" direction="column">
+              <CssPrint
+                value={`
+/*   My Awesome Title Generator CSS   */
+  
+${getFontImport(configRedux.fontFamily)}       
+
+.AwesomeTitle {
+  font-size: ${configRedux.size}px; 
+  text-align: ${configRedux.align};
+  font-family: '${configRedux.fontFamily}';
+  text-transform: ${configRedux.textTransform};
+  font-weight: ${configRedux.bold ? 'bold' : 'normal'};
+  color: rgba(${configRedux.textColor.r}, ${configRedux.textColor.g}, ${
+                  configRedux.textColor.b
+                }, ${configRedux.textColor.a})
+  text-shadow: ${makeShadow(
+    configRedux.offsetX,
+    configRedux.offsetY,
+    configRedux.offsetZ,
+    configRedux.blurRadius,
+    configRedux.shadowColor
+  )};
+}`}
+              />
+            </FlexWrapper>
+          </FlexWrapper>
+        );
       default:
         break;
     }
@@ -344,7 +483,7 @@ ${getFontImport(configRedux.fontFamily)}
         </DrawerComponent>
         <FlexWrapper id="preview" p="2rem 3rem" xSize="45%" ySize="50%">
           <Preview
-            id="title"
+            id="awesomeTitle"
             offsetX={configRedux.offsetX}
             offsetY={configRedux.offsetY}
             offsetZ={configRedux.offsetZ}
@@ -383,9 +522,11 @@ ${getFontImport(configRedux.fontFamily)}
 // * completar export css com imports de fonte html ✅
 // * adicionar botão para 'reset' ✅
 // * alterar cores da fonte e sombra ✅
-// * adicionar mudança de temas light/dark
+// * adicionar export texto curvo ✅
 // * adicionar export componente react
 // * adicionar animação de entrada
+// * adicionar mudança de temas light/dark
 // * adicionar erro ao digitar um caracter quando já tem 50 no input
 // * BUG: full-width + font-family
 // * BUG: capitalize + archRadius
+// * alterar minoria de layout - favicon, page title
