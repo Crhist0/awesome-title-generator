@@ -1,6 +1,6 @@
 import TextField from '@mui/material/TextField';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { updateState } from '../../store/ConfigSlice';
@@ -17,6 +17,14 @@ export const TextInput = () => {
     setValue(event.target.value);
   };
 
+  useEffect(() => {
+    if (value.length > 50) {
+      setTimeout(() => {
+        setValue(value.slice(0, -1));
+      }, 2000);
+    }
+  }, [value]);
+
   useDebouncedEffect(
     () => {
       dispatch(updateState({ name: 'text', changes: value }));
@@ -27,13 +35,16 @@ export const TextInput = () => {
 
   return (
     <TextField
-      // helperText="É só um título, não o texto todo..."
-      // error
+      helperText={
+        // eslint-disable-next-line quotes
+        value.length === 51 ? "It's only a title, not the whole text..." : ''
+      }
+      error={value.length === 51}
       onChange={handleInputChange}
       variant="standard"
-      value={value}
+      value={textRedux}
       inputProps={{
-        maxLength: 50,
+        maxLength: 51,
       }}
       sx={{
         paddingBottom: '1rem',
