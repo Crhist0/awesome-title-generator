@@ -6,8 +6,8 @@ export const CssPrint = (props) => {
       style={{
         overflow: 'auto',
         scrollbarWidth: 'thin',
-        height: '70vh',
-        width: '28vw',
+        height: '35rem',
+        width: '20rem',
         margin: '15px 0px 25px 25px',
       }}
     >

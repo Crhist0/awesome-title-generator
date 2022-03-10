@@ -386,31 +386,11 @@ ${getFontImport(configRedux.fontFamily)}
       );
     }, 500);
     setTimeout(() => {
-      dispatch(
-        animateState({
-          offsetX: 0,
-          offsetY: 250,
-          offsetZ: 3,
-          blurRadius: 2,
-          textColor: { r: 148, g: 95, b: 144, a: 1 },
-          shadowColor: { r: 123, g: 81, b: 133, a: 0.57 },
-          textTransform: 'uppercase',
-          fontFamily: 'Orbitron',
-          align: 'center',
-          size: 110,
-          radius: 667,
-          circle: true,
-          bold: true,
-          text: 'O w n',
-        })
-      );
+      dispatch(clearState());
     }, 1000);
     setTimeout(() => {
-      dispatch(clearState());
-    }, 1600);
-    setTimeout(() => {
       dispatch(drawerUpdateState(true));
-    }, 1800);
+    }, 1200);
   }, []);
 
   return (
@@ -427,7 +407,7 @@ ${getFontImport(configRedux.fontFamily)}
               id="sliders"
               direction="column"
               xSize="80%"
-              ySize="50%"
+              ySize="35rem"
               p="0rem 0rem 2rem 0rem"
             >
               <FlexWrapper id="text-field">
@@ -545,7 +525,11 @@ ${getFontImport(configRedux.fontFamily)}
                 />
               </FlexWrapper>
             </FlexWrapper>
-            <FlexWrapper id="reset / export" ySize="15%" justify="space-evenly">
+            <FlexWrapper
+              id="reset / export"
+              ySize="2rem"
+              justify="space-evenly"
+            >
               <ResetButton>Reset</ResetButton>
               <SplitButton
                 name="EXPORT"
