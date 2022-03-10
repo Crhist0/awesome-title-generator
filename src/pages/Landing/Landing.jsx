@@ -227,6 +227,15 @@ export const AwesomeTitle = () => {
               sx={{ margin: '13%  1.5rem' }}
             />
             <FlexWrapper id="cssPrint" direction="column">
+              <Typography
+                sx={{
+                  marginBottom: '1rem',
+                  width: '21vw',
+                }}
+              >
+                Create both files in the same folder, inside your components
+                folder, for better organization.
+              </Typography>
               <Typography sx={{ width: '21vw', margin: '0rem 1rem' }}>
                 You need &quot;styled-components&quot; lib in your project. A
                 &quot;npm i styled-components&quot; should do the trick.
