@@ -88,6 +88,13 @@ function getFontImport(font) {
   }
 }
 
+let inputSlider = (
+  <InputSlider name="Arch Radius" id="radius" min={1} max={999} />
+);
+let alignBox = (
+  <List id="align" options={['left', 'right', 'center', 'justify']} />
+);
+
 export const Landing = () => {
   const configRedux = useSelector(({ config }) => config);
   const modalExportRedux = useSelector(({ modalExport }) => modalExport);
@@ -107,12 +114,6 @@ export const Landing = () => {
   }, [configRedux.circle, configRedux.radius, configRedux.text]);
 
   // if it's not using circleType feature it won't show the 'arch radius' slider
-  let inputSlider = (
-    <InputSlider name="Arch Radius" id="radius" min={1} max={999} />
-  );
-  let alignBox = (
-    <List id="align" options={['left', 'right', 'center', 'justify']} />
-  );
   if (!configRedux.circle) {
     inputSlider = '';
   }
