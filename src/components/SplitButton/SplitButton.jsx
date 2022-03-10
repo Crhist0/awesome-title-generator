@@ -64,6 +64,7 @@ export const SplitButton = (props) => {
         </Button>
       </ButtonGroup>
       <Popper
+        style={{ zIndex: '2' }}
         open={open}
         anchorEl={anchorRef.current}
         role={undefined}
