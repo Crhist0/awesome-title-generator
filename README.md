@@ -21,8 +21,8 @@ You can try the demo [here](https://bitly.com/AwesomeTitleGenerator) (might have
 ## Lessons Learned
 
 This project helped to familiarize myself with state menager [Redux Toolkit](https://redux-toolkit.js.org/), the UI library [MaterialUI](https://mui.com/) and [ReactJs](https://reactjs.org/) mainly. <br/>
-I also could practice clean code and architecture making this tool. The most challenging task was to do as much componentization as possible. <br/>
-I was found out cool libs like [react-colorful](https://www.npmjs.com/package/react-colorful) and [circletype](https://circletype.labwire.ca/) that worth mention.<br/>
+I was able to practice clean code and architecture making this tool. The most challenging task was to do as much componentization as possible. <br/>
+I also found out cool libs like [react-colorful](https://www.npmjs.com/package/react-colorful) and [circletype](https://circletype.labwire.ca/) that worth mention.<br/>
 
 ## Run Locally
 
