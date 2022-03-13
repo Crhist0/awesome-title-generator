@@ -13,8 +13,8 @@ You can try the demo [here](https://bitly.com/AwesomeTitleGenerator) (might have
 <div style="display:flex">
 <img src="https://i.imgur.com/xsKDHnb.png" width="400" heigth="400">
 <img style="margin: 0rem 1rem" src="https://i.imgur.com/kAqSCq0.png" width="400" heigth="400">
-<img src="https://i.imgur.com/nZc1vHJ.png" width="400" heigth="400">
-<img src="https://i.imgur.com/5sPk1s4.png" width="400" heigth="400">
+<img src="https://i.imgur.com/nZc1vHJ.png" width="500" heigth="500">
+<img src="https://i.imgur.com/5sPk1s4.png" width="500" heigth="500">
   
 </div>
 
