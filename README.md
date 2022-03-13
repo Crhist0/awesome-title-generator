@@ -55,7 +55,3 @@ Start the server
 ## Feedback
 
 If you have any feedback, please reach out to at [Linkedin](https://www.linkedin.com/in/crhistian-de-oliveira-b35841161/) or discord at antiCrhistian#9049.
-
-
-Github Readme Generator
-Draggable item 16 was dropped over droppable area 13
