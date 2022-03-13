@@ -11,7 +11,7 @@ A style export tool that live edits and exports code ready to copy / paste.
 You can try the demo [here](https://bitly.com/AwesomeTitleGenerator) (might have to wait a sometime to the server wake up 😅)
 ## Screenshots
 <div style="display:flex">
-<img style="margin: 1rem 1rem" src="https://i.imgur.com/xsKDHnb.png" width="375" heigth="375">
+<img style="margin: 1rem 1rem" src="https://i.imgur.com/Y6gQI5F.png" width="375" heigth="375">
 <img style="margin: 1rem 1rem" src="https://i.imgur.com/kAqSCq0.png" width="375" heigth="375">
 <img style="margin: 1rem 1rem" src="https://i.imgur.com/nZc1vHJ.png" width="375" heigth="375">
 <img style="margin: 1rem 1rem" src="https://i.imgur.com/5sPk1s4.png" width="375" heigth="375">
