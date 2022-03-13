@@ -54,4 +54,4 @@ Start the server
 [Copyleft](https://copyleft.org/)
 ## Feedback
 
-If you have any feedback, please reach out to at [Linkedin](https://www.linkedin.com/in/crhistian-de-oliveira-b35841161/) or discord at antiCrhistian#9049.
+If you have any feedback, please reach out to at [Linkedin](https://www.linkedin.com/in/crhistian-de-oliveira-b35841161/) or discord at [antiCrhistian#9049](https://www.howtogeek.com/778286/how-to-add-friends-on-discord/).
