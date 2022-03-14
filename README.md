@@ -57,4 +57,4 @@ Start the server
 If you have any feedback, please reach out to at [Linkedin](https://www.linkedin.com/in/crhistian-de-oliveira-b35841161/) or discord at [antiCrhistian#9049](https://www.howtogeek.com/778286/how-to-add-friends-on-discord/).
 
 ## Support
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/S6S4BL87H)
+If you like the project and want to support it, you can [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/S6S4BL87H)
