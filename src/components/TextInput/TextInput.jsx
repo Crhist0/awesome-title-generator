@@ -59,7 +59,11 @@ export const TextInput = () => {
           textAlign: 'center',
         },
         '& .MuiInput-root': {
+          borderBottom: '1px solid transparent',
           ':hover': {
+            borderBottom: '1px solid ' + useTheme().palette.primary.main,
+          },
+          ':hover:before': {
             borderBottom: '1px solid ' + useTheme().palette.primary.main,
           },
           ':before': {
