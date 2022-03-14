@@ -612,7 +612,11 @@ ${getFontImport(configRedux.fontFamily)}
         </Box>
       </BasicTooltip>
       <BasicTooltip placement="bottom" title="Repository" followCursor>
-        <a href="https://github.com/Crhist0/awesome-title-generator">
+        <a
+          href="https://github.com/Crhist0/awesome-title-generator"
+          target="_blank"
+          rel="noreferrer"
+        >
           <Box
             sx={{
               position: 'fixed',

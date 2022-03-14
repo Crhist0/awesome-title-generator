@@ -60,7 +60,7 @@ export const TextInput = () => {
         },
         '& .MuiInput-root': {
           ':hover': {
-            borderBottom: '2px solid ' + useTheme().palette.primary.main,
+            borderBottom: '1px solid ' + useTheme().palette.primary.main,
           },
           ':before': {
             borderColor: useTheme().palette.primary.main,
