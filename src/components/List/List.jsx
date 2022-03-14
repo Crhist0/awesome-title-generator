@@ -4,6 +4,7 @@ import {
   MenuItem,
   FormControl,
   Select,
+  useTheme,
 } from '@mui/material';
 
 import { useState } from 'react';
@@ -72,7 +73,7 @@ export const List = (props) => {
       <InputLabel
         id="demo-multiple-name-label"
         sx={{
-          backgroundColor: 'white',
+          backgroundColor: useTheme().palette.background.default,
           maxWidth: '100%',
           padding: '0rem 0.5rem 0rem 0rem',
         }}

@@ -1,3 +1,4 @@
+import { useTheme } from '@mui/material';
 import TextField from '@mui/material/TextField';
 
 import { useEffect, useState } from 'react';
@@ -56,6 +57,14 @@ export const TextInput = () => {
         },
         '& .MuiInputBase-input': {
           textAlign: 'center',
+        },
+        '& .MuiInput-root': {
+          ':hover': {
+            borderBottom: '2px solid ' + useTheme().palette.primary.main,
+          },
+          ':before': {
+            borderColor: useTheme().palette.primary.main,
+          },
         },
       }}
     ></TextField>
