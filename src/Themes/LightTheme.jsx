@@ -21,6 +21,7 @@ const lightTheme = createTheme({
     MuiTooltip: {
       styleOverrides: {
         tooltip: {
+          color: 'rgba(51, 51, 53, 1)',
           backgroundColor: 'transparent',
         },
       },

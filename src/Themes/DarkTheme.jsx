@@ -11,9 +11,65 @@ const darkTheme = createTheme({
     },
   },
   typography: {
-    h3: {},
+    fontFamily: 'Fredoka',
   },
   components: {
+    MuiSvgIcon: {
+      styleOverrides: {
+        root: {
+          color: '#f8f9fb !important',
+        },
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        notchedOutline: {
+          borderColor: '#f8f9fb',
+        },
+      },
+    },
+    MuiSelect: {
+      styleOverrides: {
+        select: {
+          color: '#f8f9fb',
+        },
+      },
+    },
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          color: '#f8f9fb',
+        },
+      },
+    },
+    MuiInput: {
+      styleOverrides: {
+        root: {
+          color: '#f8f9fb',
+        },
+      },
+    },
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          color: '#f8f9fb',
+        },
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          color: '#f8f9fb',
+        },
+      },
+    },
+    MuiCheckbox: {
+      styleOverrides: {
+        root: {
+          color: '#f8f9fb',
+        },
+      },
+    },
     MuiTooltip: {
       styleOverrides: {
         tooltip: {
@@ -21,30 +77,20 @@ const darkTheme = createTheme({
         },
       },
     },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          backgroundColor: '#333335',
+        },
+      },
+    },
+
     MuiCssBaseline: {
       styleOverrides: {
+        '#cssPrintDiv': {
+          backgroundColor: '#333335',
+        },
         body: darkScrollbar(),
-      },
-    },
-    MuiButton: {
-      styleOverrides: {
-        root: {},
-      },
-    },
-  },
-  MuiCssBaseline: {
-    styleOverrides: {
-      p: {
-        font: 'normal',
-        fontFamily: 'Fredoka',
-      },
-      label: {
-        font: 'normal',
-        fontFamily: 'Fredoka',
-      },
-      input: {
-        font: 'normal',
-        fontFamily: 'Fredoka',
       },
     },
   },
