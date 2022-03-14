@@ -21,8 +21,10 @@ import {
   Paper,
   Typography,
   Divider,
+  useTheme,
 } from '@mui/material';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import { BsGithub } from 'react-icons/bs';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { updateState } from '../../store/ExportSlice';
@@ -583,7 +585,7 @@ ${getFontImport(configRedux.fontFamily)}
                   sx={{
                     position: 'fixed',
                     top: '16px',
-                    right: '16px',
+                    right: '160px',
                   }}
                 />
               </Box>
@@ -597,19 +599,34 @@ ${getFontImport(configRedux.fontFamily)}
           sx={{
             zIndex: '99',
             position: 'fixed',
-            right: '100px',
+            right: '124px',
             top: '16px',
           }}
         >
           <CustomizedSwitches />
         </Box>
       </BasicTooltip>
+      <BasicTooltip placement="bottom" title="Repository" followCursor>
+        <a href="https://github.com/Crhist0/awesome-title-generator">
+          <Box
+            sx={{
+              position: 'fixed',
+              right: '80px',
+              top: '22px',
+              fontSize: '1.9rem',
+              color: useTheme().palette.primary.main,
+            }}
+          >
+            <BsGithub />
+          </Box>
+        </a>
+      </BasicTooltip>
       <BasicTooltip placement="bottom" title="Buy me a coffee" followCursor>
         <Box
           sx={{
             position: 'fixed',
             right: '32px',
-            top: '22px',
+            top: '25px',
           }}
         >
           <KofiButton />
