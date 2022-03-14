@@ -11,6 +11,8 @@ import { List } from '../../components/List/List';
 import { SplitButton } from '../../components/SplitButton/SplitButton';
 import ResetButton from '../../components/Button/Button';
 import BasicTooltip from '../../components/Tooltip/Tooltip';
+import CustomizedSwitches from '../../components/ThemeSwitch/ThemeSwitch';
+import { KofiButton } from '../../components/KofiButton/KofiButton';
 import {
   Modal,
   Box,
@@ -20,16 +22,17 @@ import {
   Typography,
   Divider,
 } from '@mui/material';
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { updateState } from '../../store/ExportSlice';
 import { updateState as drawerUpdateState } from '../../store/DrawerSlice';
+import { animateState, clearState } from '../../store/ConfigSlice';
 
 import { useEffect, useState } from 'react';
 
 import ColorPicker from '../../components/ColorPicker/ColorPicker';
 import CircleType from 'circletype';
-import { animateState, clearState } from '../../store/ConfigSlice';
 
 const modalStyle = {
   position: 'absolute',
@@ -126,6 +129,7 @@ export const Landing = () => {
         return (
           <FlexWrapper id="cssPrint" direction="column">
             <CssPrint
+              mode={selected}
               value={`
 /*    My Awesome Title Generator CSS    */
 
@@ -154,6 +158,7 @@ text-shadow: ${makeShadow(
         return (
           <FlexWrapper id="cssPrint" direction="column">
             <CssPrint
+              mode={selected}
               value={`
 /*    My Awesome Title Generator CSS    */
 
@@ -184,6 +189,7 @@ ${getFontImport(configRedux.fontFamily)}
           <FlexWrapper>
             <FlexWrapper id="cssPrint" direction="column">
               <CssPrint
+                mode={selected}
                 value={`
 //    AwesomeTitle.jsx 
 
@@ -224,19 +230,18 @@ export const AwesomeTitle = () => {
             <Divider
               orientation="vertical"
               flexItem
-              sx={{ margin: '13%  1.5rem' }}
+              sx={{ margin: '13%  1rem' }}
             />
             <FlexWrapper id="cssPrint" direction="column">
               <Typography
                 sx={{
                   marginBottom: '1rem',
-                  width: '21vw',
                 }}
               >
                 Create both files in the same folder, inside your components
                 folder, for better organization.
               </Typography>
-              <Typography sx={{ width: '21vw', margin: '0rem 1rem' }}>
+              <Typography sx={{ margin: '0rem 1rem' }}>
                 You need &quot;styled-components&quot; lib in your project. A
                 &quot;npm i styled-components&quot; should do the trick.
                 <Typography sx={{ marginTop: '1rem' }}>
@@ -248,10 +253,11 @@ export const AwesomeTitle = () => {
             <Divider
               orientation="vertical"
               flexItem
-              sx={{ margin: '13%  -1px 13% 1.5rem' }}
+              sx={{ margin: '13%  -1px 13% 1rem' }}
             />
             <FlexWrapper id="cssPrint" direction="column">
               <CssPrint
+                mode={selected}
                 value={`
 //    styled.jsx
   
@@ -384,13 +390,13 @@ ${getFontImport(configRedux.fontFamily)}
           text: 'Your',
         })
       );
-    }, 500);
-    setTimeout(() => {
-      dispatch(clearState());
     }, 1000);
     setTimeout(() => {
+      dispatch(clearState());
+    }, 2000);
+    setTimeout(() => {
       dispatch(drawerUpdateState(true));
-    }, 1200);
+    }, 3500);
   }, []);
 
   return (
@@ -570,11 +576,45 @@ ${getFontImport(configRedux.fontFamily)}
             timeout: 1000,
           }}
         >
-          <Fade in={modalOpen}>
-            <Box sx={modalStyle}>{showCss(modalExportRedux.selected)}</Box>
+          <Fade id="cssPrintDiv" in={modalOpen}>
+            <Box sx={modalStyle}>
+              <Box sx={{ cursor: 'pointer' }} onClick={handleModalClose}>
+                <CloseOutlinedIcon
+                  sx={{
+                    position: 'fixed',
+                    top: '16px',
+                    right: '16px',
+                  }}
+                />
+              </Box>
+              {showCss(modalExportRedux.selected)}
+            </Box>
           </Fade>
         </Modal>
       </FlexWrapper>
+      <BasicTooltip placement="bottom" title="Theme" followCursor>
+        <Box
+          sx={{
+            zIndex: '99',
+            position: 'fixed',
+            right: '100px',
+            top: '16px',
+          }}
+        >
+          <CustomizedSwitches />
+        </Box>
+      </BasicTooltip>
+      <BasicTooltip placement="bottom" title="Buy me a coffee" followCursor>
+        <Box
+          sx={{
+            position: 'fixed',
+            right: '32px',
+            top: '22px',
+          }}
+        >
+          <KofiButton />
+        </Box>
+      </BasicTooltip>
     </>
   );
 };
@@ -590,8 +630,8 @@ ${getFontImport(configRedux.fontFamily)}
 // * Reset do texto ✅
 // * adicionar erro ao digitar um caracter quando já tem 50 no input ✅
 // * alterar minoria de layout - favicon, page- title ✅
-// * refatorar responsividade
-// * adicionar mudança de temas light/dark
+// * refatorar responsividade 🟨
+// * adicionar mudança de temas light/dark ✅
 // * BUG: full-width + font-family
 // * BUG: capitalize + archRadius
 // * BUG: reset + list = após o reset não é possível voltar ao item da lista que estava previamente selecionado
