@@ -1,12 +1,18 @@
 import { createTheme } from '@mui/material';
 
+const colors = {
+  main: 'rgba(51, 51, 53, 1)',
+  bg1: '#f8f9fb',
+  bg2: undefined,
+};
+
 const lightTheme = createTheme({
   palette: {
     background: {
-      default: '#f8f9fb',
+      default: colors.bg1,
     },
     primary: {
-      main: 'rgba(51, 51, 53, 1)',
+      main: colors.main,
     },
   },
   typography: {
@@ -21,7 +27,7 @@ const lightTheme = createTheme({
     MuiTooltip: {
       styleOverrides: {
         tooltip: {
-          color: 'rgba(51, 51, 53, 1)',
+          color: colors.main,
           backgroundColor: 'transparent',
         },
       },

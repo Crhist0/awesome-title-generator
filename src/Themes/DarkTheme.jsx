@@ -1,13 +1,19 @@
 import { createTheme, darkScrollbar } from '@mui/material';
 
+const colors = {
+  main: '#f8f9fb',
+  bg1: 'rgba(51, 51, 53, 1)',
+  bg2: '#333335',
+};
+
 const darkTheme = createTheme({
   mode: 'dark',
   palette: {
     background: {
-      default: 'rgba(51, 51, 53, 1)',
+      default: colors.bg1,
     },
     primary: {
-      main: '#f8f9fb',
+      main: colors.main,
     },
   },
   typography: {
@@ -17,56 +23,56 @@ const darkTheme = createTheme({
     MuiSvgIcon: {
       styleOverrides: {
         root: {
-          color: '#f8f9fb !important',
+          color: colors.main + ' !important',
         },
       },
     },
     MuiOutlinedInput: {
       styleOverrides: {
         notchedOutline: {
-          borderColor: '#f8f9fb',
+          borderColor: colors.main,
         },
       },
     },
     MuiSelect: {
       styleOverrides: {
         select: {
-          color: '#f8f9fb',
+          color: colors.main,
         },
       },
     },
     MuiMenuItem: {
       styleOverrides: {
         root: {
-          color: '#f8f9fb',
+          color: colors.main,
         },
       },
     },
     MuiInput: {
       styleOverrides: {
         root: {
-          color: '#f8f9fb',
+          color: colors.main,
         },
       },
     },
     MuiTypography: {
       styleOverrides: {
         root: {
-          color: '#f8f9fb',
+          color: colors.main,
         },
       },
     },
     MuiInputLabel: {
       styleOverrides: {
         root: {
-          color: '#f8f9fb',
+          color: colors.main,
         },
       },
     },
     MuiCheckbox: {
       styleOverrides: {
         root: {
-          color: '#f8f9fb',
+          color: colors.main,
         },
       },
     },
@@ -80,7 +86,7 @@ const darkTheme = createTheme({
     MuiPaper: {
       styleOverrides: {
         root: {
-          backgroundColor: '#333335',
+          backgroundColor: colors.bg2,
         },
       },
     },
@@ -88,7 +94,7 @@ const darkTheme = createTheme({
     MuiCssBaseline: {
       styleOverrides: {
         '#cssPrintDiv': {
-          backgroundColor: '#333335',
+          backgroundColor: colors.bg2,
         },
         body: darkScrollbar(),
       },
