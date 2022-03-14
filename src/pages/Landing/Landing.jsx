@@ -21,6 +21,7 @@ import {
   Paper,
   Typography,
   Divider,
+  IconButton,
   useTheme,
 } from '@mui/material';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
@@ -580,14 +581,18 @@ ${getFontImport(configRedux.fontFamily)}
         >
           <Fade id="cssPrintDiv" in={modalOpen}>
             <Box sx={modalStyle}>
-              <Box sx={{ cursor: 'pointer' }} onClick={handleModalClose}>
-                <CloseOutlinedIcon
-                  sx={{
-                    position: 'fixed',
-                    top: '16px',
-                    right: '160px',
-                  }}
-                />
+              <Box
+                sx={{
+                  width: '100%',
+                  display: 'flex',
+                  justifyContent: 'flex-end',
+                  padding: '0.4rem',
+                  marginBottom: '-50px',
+                }}
+              >
+                <IconButton onClick={handleModalClose}>
+                  <CloseOutlinedIcon />
+                </IconButton>
               </Box>
               {showCss(modalExportRedux.selected)}
             </Box>
