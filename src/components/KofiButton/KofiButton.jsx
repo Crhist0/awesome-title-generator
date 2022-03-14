@@ -5,12 +5,12 @@ export const KofiButton = () => {
         <div
           style={{
             border: '0px',
-            borderRadius: '12px',
-            height: '36px',
-            width: '36px',
+            borderRadius: '18px',
+            height: '32px',
+            width: '32px',
             backgroundImage: 'url(https://cdn.ko-fi.com/cdn/kofi2.png?v=3)',
-            backgroundSize: '180px',
-            backgroundPosition: '-6px',
+            backgroundSize: '140px',
+            backgroundPosition: '-2px',
           }}
         ></div>
       </a>
