@@ -32,6 +32,13 @@ const lightTheme = createTheme({
         },
       },
     },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          backgroundColor: colors.bg1,
+        },
+      },
+    },
     MuiCssBaseline: {
       styleOverrides: {},
     },
