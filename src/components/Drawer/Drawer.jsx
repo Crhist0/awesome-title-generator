@@ -11,7 +11,7 @@ const arrowTransitions = (state) => {
       <ArrowRightIcon
         sx={{
           opacity: '0.8',
-          transition: '4s',
+          transition: '6s',
         }}
       />
     );
@@ -53,11 +53,10 @@ export const DrawerComponent = (props) => {
       {['left'].map((anchor) => (
         <Fragment key={anchor}>
           <Drawer
+            SlideProps={{ timeout: 400 }}
             sx={{
               '& .MuiBackdrop-root, .MuiBackdrop-root-MuiModal-backdrop': {
                 backgroundColor: 'rgba(0, 0, 0, 0) ',
-                transition:
-                  'background-color 0.2s cubic-bezier(0.67, 0.1, 0.35, 0.83) !important;',
               },
             }}
             anchor={anchor}
