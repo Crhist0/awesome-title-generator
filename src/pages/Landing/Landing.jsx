@@ -445,12 +445,7 @@ ${getFontImport(configRedux.fontFamily)}
                 />
                 <InputSlider name="Blur radius" id="blurRadius" min={0} />
               </FlexWrapper>
-              <FlexWrapper id="Size-and-Curve_and_Bold">
-                <InputSlider name="Size" id="size" min={1} max={150} />
-                <CheckBox label="Curve Text" id="circle" />
-                <CheckBox label="Bold" id="bold" />
-              </FlexWrapper>
-              <FlexWrapper id="colorPicker" p="1rem 0rem 1.5rem">
+              <FlexWrapper id="colorPicker" p="0.2rem 0rem 1.3rem">
                 <FlexWrapper direction="column" id="shadowColor">
                   <Typography sx={{ fontSize: '0.9rem', marginBottom: '15px' }}>
                     Shadow Color
@@ -480,11 +475,18 @@ ${getFontImport(configRedux.fontFamily)}
                   </BasicTooltip>
                 </FlexWrapper>
               </FlexWrapper>
+              <FlexWrapper id="Size-and-Curve_and_Bold">
+                <InputSlider name="Size" id="size" min={1} max={150} />
+                <CheckBox label="Curve Text" id="circle" />
+                <CheckBox label="Bold" id="bold" />
+              </FlexWrapper>
+
               <FlexWrapper id="Arch/Align-and-textTransform">
                 {inputSlider}
                 {alignBox}
                 <List
                   id="textTransform"
+                  w={configRedux.circle ? 239 : 274} // that made a smooth transition on drawer starter width
                   options={
                     configRedux.circle
                       ? [
