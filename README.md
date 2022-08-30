@@ -8,7 +8,7 @@ A style export tool that live edits and exports code ready to copy / paste.
 - Theme mode toggle
 ## Demo
 
-You can try the demo [here](https://bit.ly/AwesomeTitleGenerator) (might have to wait a sometime to the server wake up 😅)
+You can try the demo [here](https://bit.ly/AwesomeTitleGenerator) (might have to wait a sometime to the server wake up 😅) or [here](https://title-generator.onrender.com/)
 ## Screenshots
 <div id="flexBox" style="display:flex">
 <img style="margin: 1rem 1rem" src="https://i.imgur.com/Y6gQI5F.png" width="375" heigth="375">
